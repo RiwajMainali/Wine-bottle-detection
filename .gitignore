@@ -1,0 +1,7 @@
+
+*.jpg
+Untitled.ipynb
+/venv/*
+*.weights
+*.txt
+*.cfg
