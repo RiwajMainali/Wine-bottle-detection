@@ -1,10 +1,5 @@
-
 import cv2
-import argparse
 import numpy as np
-
-args = {'image': 'img.jpg', 'config': 'yolov3.cfg',
-        'weights': 'yolov3.weights', 'classes': 'yolov3.txt'}
 
 
 def get_output_layers(net):
@@ -22,7 +17,7 @@ def get_output_layers(net):
 
 def draw_prediction(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
 
-    label = str(classes[class_id]) + " "+str(round(confidence*100, 2))+"%"
+    label = str(classes[class_id])
 
     color = COLORS[class_id]
 
@@ -32,7 +27,7 @@ def draw_prediction(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
 
-image = cv2.imread(args['image'])
+image = cv2.imread("a.jpg")
 
 Width = image.shape[1]
 Height = image.shape[0]
@@ -40,12 +35,12 @@ scale = 0.00392
 
 classes = None
 
-with open(args['classes'], 'r') as f:
+with open("yolov3.txt", 'r') as f:
     classes = [line.strip() for line in f.readlines()]
 
 COLORS = np.random.uniform(0, 255, size=(len(classes), 3))
 
-net = cv2.dnn.readNet(args['weights'], args['config'])
+net = cv2.dnn.readNet("yolov3.weights", "yolov3.cfg")
 
 blob = cv2.dnn.blobFromImage(
     image, scale, (416, 416), (0, 0, 0), True, crop=False)
