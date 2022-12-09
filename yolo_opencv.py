@@ -27,7 +27,9 @@ def draw_prediction(img, class_id, confidence, x, y, x_plus_w, y_plus_h):
                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
 
-image = cv2.imread("a.jpg")
+nameInput = input("Please enter image name with extension (.jpg/.png): \n")
+
+image = cv2.imread(nameInput)
 
 Width = image.shape[1]
 Height = image.shape[0]
